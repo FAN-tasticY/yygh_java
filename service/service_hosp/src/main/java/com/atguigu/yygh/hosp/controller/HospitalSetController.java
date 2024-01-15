@@ -63,5 +63,25 @@ public class HospitalSetController {
         return R.ok().data(map);
     }
 
+    @PostMapping("/batchDelete")
+    public R batchDelete(@RequestBody List<Integer> ids){
+        this.hospitalSetService.removeByIds(ids);
+        return R.ok();
+    }
+
+    @GetMapping("/oneDelete/{id}")
+    public R oneDelete(@PathVariable Long id){
+        this.hospitalSetService.removeById(id);
+        return R.ok();
+    }
+
+    @GetMapping("/changeStatus/{id}/{status}")
+    public R changeStatus(@PathVariable Long id,@PathVariable Integer status){
+        HospitalSet hospitalSet = new HospitalSet();
+        hospitalSet.setId(id);
+        hospitalSet.setStatus(status);
+        this.hospitalSetService.updateById(hospitalSet);
+        return R.ok();
+    }
 }
 
