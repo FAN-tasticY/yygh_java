@@ -83,5 +83,22 @@ public class HospitalSetController {
         this.hospitalSetService.updateById(hospitalSet);
         return R.ok();
     }
+
+    @PostMapping("/save")
+    public R save(@RequestBody HospitalSet hospitalSet){
+        if (!StringUtils.isEmpty(hospitalSet.getId())){
+            this.hospitalSetService.updateById(hospitalSet);
+        }else {
+            this.hospitalSetService.save(hospitalSet);
+        }
+
+        return R.ok();
+    }
+
+    @GetMapping("/findById/{id}")
+    public R findById(@PathVariable Long id){
+        HospitalSet byId = this.hospitalSetService.getById(id);
+        return R.ok().data("hospsetObj",byId);
+    }
 }
 
