@@ -7,6 +7,7 @@
 		<module>service</module>
 		<module>coder</module>
         <module>common</module>
+		<module>hospital-manage</module>
     </modules>
 	<!--	我们的工程继承父工程springboot-->
 	<parent>
