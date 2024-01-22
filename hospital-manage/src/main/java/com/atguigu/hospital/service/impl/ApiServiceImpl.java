@@ -99,6 +99,7 @@ public class ApiServiceImpl implements ApiService {
         JSONObject bookingRule = jsonObject.getJSONObject("bookingRule");
         paramMap.put("bookingRule",bookingRule.toJSONString());
 
+        // 你小子,怎么还造假嘞 哈哈哈
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", HttpRequestHelper.getSignSingle(this.getSignKey()));
 
@@ -106,7 +107,6 @@ public class ApiServiceImpl implements ApiService {
         //httpclient
         JSONObject respone =
                 HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveHospital");
-        System.out.println(respone.toJSONString());
 
         if(null != respone && 200 == respone.getIntValue("code")) {
             return true;
